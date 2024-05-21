@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfTrain.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTrain"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="400">
+
+    <StackPanel Margin="10">
+        <Label Content="{Binding Locomotive}"></Label>
+
+        <!--Přidávání  vagonu-->
+        <Label Content="Choose wagon:" />
+        <ComboBox x:Name="cbWagonType" SelectionChanged="CbWagonType_SelectionChanged" />
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="lbTbFirst" Visibility="Collapsed" />
+            <TextBox Width="100" x:Name="tbFirst" Visibility="Collapsed" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="lbTbSecond" Visibility="Collapsed" />
+            <TextBox  Width="100" x:Name="tbSecond" Visibility="Collapsed"/>
+        </StackPanel>
+        <Button x:Name="btnAddWagon" Width="100" HorizontalAlignment="Left" Click="BtnAddWagon_Click" Visibility="Collapsed">Add wagon</Button>
+
+        <!--Mazání vagonu-->
+
+        <DockPanel LastChildFill="True">
+            <StackPanel Orientation="Vertical" Width="365">
+                <WrapPanel Height="350" Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                    <ListBox  x:Name="listBoxWagons" 
+                              HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"  
+                              ItemsSource="{Binding Vagons}" 
+                              SelectionChanged="ListBoxWagons_SelectionChanged" Background="LightGoldenrodYellow">
+                                
+                    </ListBox>
+                </WrapPanel>
+            </StackPanel>
+        </DockPanel>
+
+
+
+
+        <Button x:Name="btnDeleteWagon" Click="BtnDeleteWagon_Click" Visibility="Collapsed">Delete wagon</Button>
+
+        <!--Rezervace sedadel-->
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="lbTbReserveSeat" Content="Rezervovat sedadlo:" Visibility="Collapsed" />
+            <TextBox Width="100" x:Name="tbReserveSeat" Visibility="Collapsed" />
+        </StackPanel>
+        <Label x:Name="lbSelectedSeat" Visibility="Collapsed" />
+        <Button x:Name="btnReserve" Visibility="Collapsed" Click="BtnReserve_Click">Rezervovat</Button>
+    </StackPanel>
+
+</Window>
